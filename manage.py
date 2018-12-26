@@ -17,6 +17,14 @@ def hello():
 
 
 
+@app.route('/getStatus')
+def getStatus():
+    global ledG
+    global ledSDB
+    global ledS
+    global ledC
+
+    return "{data:[{\"G\": "+str(ledG)+"},{\"SDB\": "+str(ledSDB)+"},{\"S\": "+str(ledS)+"},{\"C\": "+str(ledC)+"}]}"
 
 
 @app.route('/ALightOn')
@@ -57,7 +65,7 @@ def GSwitch():
     else :
         os.system("mosquitto_pub -h 127.0.0.1 -t listen -m onG")
         ledG = True
-    return ""
+    return "{\"status\" : "+str(ledG)+"}"
 
 @app.route('/GLightOn')
 def GLightsOn():
@@ -84,7 +92,7 @@ def SSwitch():
     else :
         os.system("mosquitto_pub -h 127.0.0.1 -t listen -m onS")
         ledS = True
-    return ""
+    return "{\"status\" : "+str(ledS)+"}"
 @app.route('/SLightOn')
 def SLightsOn():
     global ledS
@@ -108,7 +116,8 @@ def SDBSwitch():
     else :
         os.system("mosquitto_pub -h 127.0.0.1 -t listen -m onSDB")
         ledSDB = True
-    return ""
+    return "{\"status\" : "+str(ledSDB)+"}"
+
 @app.route('/SDBLightOn')
 def SDBLightsOn():
     global ledSDB
@@ -132,7 +141,7 @@ def CSwitch():
     else :
         os.system("mosquitto_pub -h 127.0.0.1 -t listen -m onC")
         ledC = True
-    return ""
+    return "{\"status\" : "+str(ledC)+"}"
 
 @app.route('/CLightOn')
 def CLightsOn():
@@ -161,4 +170,4 @@ def GetTemp():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host= '0.0.0.0')
