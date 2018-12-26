@@ -3,12 +3,26 @@ from gpiozero import *
 import glob
 import time
 import os
+import RPi.GPIO as gpio
 
 
 ledG = LED(26)
 ledSDB = LED(6)
 ledS = LED(19)
 ledC = LED(13)
+
+red = 21
+blue = 16
+green = 20
+
+gpio.setmode(gpio.BCM)
+gpio.setup(red,gpio.OUT)
+gpio.setup(blue,gpio.OUT)
+gpio.setup(green,gpio.OUT)
+gpio.output(red,gpio.LOW)
+gpio.output(blue,gpio.LOW)
+gpio.output(green,gpio.LOW)
+
 os.system('modprobe w1-gpio')
 os.system('modprobe w1-therm')
 base_dir = '/sys/bus/w1/devices/'
@@ -68,9 +82,28 @@ def on_message(client, userdata, msg):
         ledS.off()
         ledC.off()
     if msg.payload == "getTemp":
-        print(read_temp())
-        read_temp()
-        return read_temp()
+        temp = read_temp()
+        f= open("./temp.txt","w+")
+        f.write(str(temp))
+	f.close()
+	print("_______")
+	print(temp)
+        print("_______")
+	if temp < 24 :
+            print("cold")
+            gpio.output(blue, gpio.HIGH)
+            gpio.output(green, gpio.LOW)
+            gpio.output(red, gpio.LOW)
+        elif temp < 30:
+            print("good")
+            gpio.output(blue, gpio.LOW)
+            gpio.output(green, gpio.HIGH)
+            gpio.output(red, gpio.LOW)
+        else :
+            print("hot")
+            gpio.output(blue, gpio.LOW)
+            gpio.output(green, gpio.LOW)
+            gpio.output(red, gpio.HIGH)
         
 client = mqtt.Client()
 client.on_connect = on_connect
