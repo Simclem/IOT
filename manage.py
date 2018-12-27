@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_cors import CORS
 import os
 import time
 
@@ -9,7 +10,7 @@ ledC = False
 os.system("mosquitto_pub -h 127.0.0.1 -t listen -m offA")  
 
 app = Flask(__name__)
-
+CORS(app)
 
 @app.route('/')
 def hello():
@@ -24,7 +25,7 @@ def getStatus():
     global ledS
     global ledC
 
-    return "{data:[{\"G\": "+str(ledG)+"},{\"SDB\": "+str(ledSDB)+"},{\"S\": "+str(ledS)+"},{\"C\": "+str(ledC)+"}]}"
+    return "{\"data\":[{\"G\": \""+str(ledG)+"\"},{\"SDB\": \""+str(ledSDB)+"\"},{\"S\": \""+str(ledS)+"\"},{\"C\": \""+str(ledC)+"\"}]}"
 
 
 @app.route('/ALightOn')
