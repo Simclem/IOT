@@ -160,7 +160,7 @@ def CLightsOff():
     os.system("mosquitto_pub -h 127.0.0.1 -t listen -m offC")
     return ""
 @app.route('/WareHouseSwitch')
-def SSwitch():
+def WSwitch():
     global servoG
 
     if servoG == True : 
