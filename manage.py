@@ -27,7 +27,7 @@ def getStatus():
     global ledC
     global servoG
 
-    return "{\"data\":[{\"G\": \""+str(ledG)+"\"},{\"SDB\": \""+str(ledSDB)+"\"},{\"S\": \""+str(ledS)+"\"},{\"C\": \""+str(ledC)+"\"},{\"W\": \""+str(servoG)+"\"},]}"
+    return "{\"data\":[{\"G\": \""+str(ledG)+"\"},{\"SDB\": \""+str(ledSDB)+"\"},{\"S\": \""+str(ledS)+"\"},{\"C\": \""+str(ledC)+"\"},{\"W\": \""+str(servoG)+"\"}]}"
 
 
 @app.route('/ALightOn')
