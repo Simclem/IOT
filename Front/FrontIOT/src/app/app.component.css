@@ -1,0 +1,68 @@
+.container-fluid{
+    color: white; 
+    font: bold;
+    text-align: center;
+}
+#global{
+    background-color: #f3bfcc;
+    margin-top: 10%; 
+    padding-left: 50px;
+    padding-right: 50px;
+}
+#temp{
+    background-color: #4a90e2;
+    height : 331px;
+    padding-left: 15px;
+}
+#bed{
+    background-color : #be4bdb;
+    height : 150px;
+}
+#car{
+    background-color : #15aabf;
+    height : 150px;
+}
+#bath{
+    background-color : #82c91e;
+    height : 150px;
+}
+#tv{
+    background-color : #7950f2;
+    height : 150px;
+}
+#warehouse{
+    background-color : #ff6961;
+    height : 250px;
+}
+#door{
+    background-color : #ffb347;
+    height : 250px;
+}
+.icon-temp{
+    padding-top: 30px;
+    font-size: 400%;
+}
+.icon-bed{
+    padding-top: 30px;
+    font-size: 150%;
+}
+.icon-car{
+    padding-top: 30px;
+    font-size: 150%;
+}
+.icon-bath{
+    padding-top: 30px;
+    font-size: 150%;
+}
+.icon-tv{
+    padding-top: 30px;
+    font-size: 150%;
+}
+.icon-warehouse{
+    padding-top: 30px;
+    font-size: 400%;   
+}
+.icon-door{
+    padding-top: 30px;
+    font-size: 400%;   
+}
