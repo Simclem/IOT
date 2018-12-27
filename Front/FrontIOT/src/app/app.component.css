@@ -13,30 +13,64 @@
     background-color: #4a90e2;
     height : 331px;
     padding-left: 15px;
+    transition: all .2s ease-in-out; 
+}
+#temp:hover{
+    transform: scale(1.05);
 }
 #bed{
     background-color : #be4bdb;
     height : 150px;
+    transition: all .2s ease-in-out; 
+
+}
+#bed:hover{
+    transform: scale(1.05);
 }
 #car{
     background-color : #15aabf;
     height : 150px;
+    transition: all .2s ease-in-out; 
+
+}
+#car:hover{
+    transform: scale(1.05);
 }
 #bath{
     background-color : #82c91e;
     height : 150px;
+    transition: all .2s ease-in-out; 
+
+}
+#bath:hover{
+    transform: scale(1.05);
 }
 #tv{
     background-color : #7950f2;
     height : 150px;
+    transition: all .2s ease-in-out; 
+
+}
+#tv:hover{
+    transform: scale(1.05);
 }
 #warehouse{
     background-color : #ff6961;
     height : 250px;
+    transition: all .2s ease-in-out; 
+
+}
+#warehouse:hover{
+    transform: scale(1.05);
 }
 #door{
     background-color : #ffb347;
     height : 250px;
+    transition: all .2s ease-in-out; 
+
+}
+#door:hover{
+    transform: scale(1.05);
 }
 .icon-temp{
     padding-top: 30px;
