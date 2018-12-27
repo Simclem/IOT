@@ -1,11 +1,13 @@
 <div class="container-fluid" id="global">
   <div class="row">
     <div class="col-md-4" style="padding-right: 16px;">
-      <div class="container-fluid" id="temp">
+      <div class="container-fluid" id="temp" [style.background-color]="tempColor">
         <div class="icon-temp">
           <i class="fas fa-thermometer-half"></i>
         </div>
         <div class="text-temp">
+            {{tempSTR}}
+            
         </div>
       </div>
     </div>
