@@ -8,4 +8,7 @@ export class AppService {
     getAllStatus(): any {
         return this.http.get('http://192.168.1.16:5000/getStatus');
     }
+    getData(URL: string): any {
+        return this.http.get(URL);
+    }
 }

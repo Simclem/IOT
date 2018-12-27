@@ -1,6 +1,6 @@
 .container-fluid{
     color: white; 
-    font: bold;
+    font-weight: bold;
     text-align: center;
 }
 #global{
@@ -65,4 +65,16 @@
 .icon-door{
     padding-top: 30px;
     font-size: 400%;   
+}
+.text-bed{
+    font-size: 150%;
+}
+.text-car{
+    font-size: 150%;
+}
+.text-bath{
+    font-size: 150%;
+}
+.text-tv{
+    font-size: 150%;
 }
