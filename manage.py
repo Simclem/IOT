@@ -165,7 +165,8 @@ def GetTemp():
     f= open("./temp.txt","r")
     data = f.readlines()
     f.close()
-    return str(data[0])
+    
+    return "{\"temperature\": \""+str(data[0])+"\"}"
     #return ''
 
 
