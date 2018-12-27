@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from './app.service';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -12,14 +13,19 @@ export class AppComponent implements OnInit {
   ledG: boolean;
   ledSDB: boolean;
   ledS: boolean;
+  servoG: boolean;
   tempSTR: string;
   tempColor: string;
+
   constructor(public service: AppService) {
 
   }
   ngOnInit() {
     this.initFront();
     this.initTemp();
+    interval(5000).subscribe(x => this.initTemp());
+
+
   }
 
   initTemp(): void {
@@ -55,6 +61,11 @@ export class AppComponent implements OnInit {
       this.ledS = data.status;
     });
   }
+  WarehouseSwitch(): void {
+    this.service.getData('http://192.168.1.16:5000/WareHouseSwitch').subscribe((data: any) => {
+      this.servoG = data.status;
+    });
+  }
 
   initFront() {
     this.service.getAllStatus().subscribe((data: any) => {
@@ -62,6 +73,7 @@ export class AppComponent implements OnInit {
       this.ledSDB = data.data[1].SDB;
       this.ledS = data.data[2].S;
       this.ledC = data.data[3].C;
+      this.servoG = data.data[4].W;
     });
   }
 }

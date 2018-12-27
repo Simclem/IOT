@@ -89,11 +89,15 @@
   </div>
   <div class="row" style="margin-top: 31px">
     <div class="col-md-6">
-      <div class="container-fluid" id="warehouse">
+      <div class="container-fluid" id="warehouse" (click) = WarehouseSwitch()>
         <div class="icon-warehouse">
           <i class="fas fa-warehouse"></i>
         </div>
-        <div class="text-warehouse">
+        <div class="text-warehouse" *ngIf='servoG==="True"'>
+          Open
+        </div>
+        <div class="text-warehouse" *ngIf='servoG==="False"'>
+          Closed
         </div>
       </div>
     </div>
