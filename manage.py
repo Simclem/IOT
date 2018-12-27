@@ -7,6 +7,7 @@ ledG = False
 ledSDB = False
 ledS = False
 ledC = False
+servoG = False
 os.system("mosquitto_pub -h 127.0.0.1 -t listen -m offA")  
 
 app = Flask(__name__)
@@ -24,8 +25,9 @@ def getStatus():
     global ledSDB
     global ledS
     global ledC
+    global servoG
 
-    return "{\"data\":[{\"G\": \""+str(ledG)+"\"},{\"SDB\": \""+str(ledSDB)+"\"},{\"S\": \""+str(ledS)+"\"},{\"C\": \""+str(ledC)+"\"}]}"
+    return "{\"data\":[{\"G\": \""+str(ledG)+"\"},{\"SDB\": \""+str(ledSDB)+"\"},{\"S\": \""+str(ledS)+"\"},{\"C\": \""+str(ledC)+"\"},{\"W\": \""+str(servoG)+"\"},]}"
 
 
 @app.route('/ALightOn')
@@ -157,6 +159,17 @@ def CLightsOff():
     ledC = False
     os.system("mosquitto_pub -h 127.0.0.1 -t listen -m offC")
     return ""
+@app.route('/WareHouseSwitch')
+def SSwitch():
+    global servoG
+
+    if servoG == True : 
+        os.system("mosquitto_pub -h 127.0.0.1 -t listen -m opG")
+        servoG = False
+    else :
+        os.system("mosquitto_pub -h 127.0.0.1 -t listen -m clG")
+        servoG = True
+    return "{\"status\" : \""+str(servoG)+"\"}"
 
 @app.route('/GetTemp')
 def GetTemp():
