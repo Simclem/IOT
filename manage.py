@@ -66,7 +66,7 @@ def GSwitch():
     else :
         os.system("mosquitto_pub -h 127.0.0.1 -t listen -m onG")
         ledG = True
-    return "{\"status\" : "+str(ledG)+"}"
+    return "{\"status\" : \""+str(ledG)+"\"}"
 
 @app.route('/GLightOn')
 def GLightsOn():
@@ -93,7 +93,7 @@ def SSwitch():
     else :
         os.system("mosquitto_pub -h 127.0.0.1 -t listen -m onS")
         ledS = True
-    return "{\"status\" : "+str(ledS)+"}"
+    return "{\"status\" : \""+str(ledS)+"\"}"
 @app.route('/SLightOn')
 def SLightsOn():
     global ledS
@@ -117,7 +117,7 @@ def SDBSwitch():
     else :
         os.system("mosquitto_pub -h 127.0.0.1 -t listen -m onSDB")
         ledSDB = True
-    return "{\"status\" : "+str(ledSDB)+"}"
+    return "{\"status\" : \""+str(ledSDB)+"\"}"
 
 @app.route('/SDBLightOn')
 def SDBLightsOn():
@@ -142,7 +142,7 @@ def CSwitch():
     else :
         os.system("mosquitto_pub -h 127.0.0.1 -t listen -m onC")
         ledC = True
-    return "{\"status\" : "+str(ledC)+"}"
+    return "{\"status\" : \""+str(ledC)+"\"}"
 
 @app.route('/CLightOn')
 def CLightsOn():
