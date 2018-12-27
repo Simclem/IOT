@@ -12,15 +12,29 @@ export class AppComponent implements OnInit {
   ledG: boolean;
   ledSDB: boolean;
   ledS: boolean;
-
+  tempSTR: string;
+  tempColor: string;
   constructor(public service: AppService) {
 
   }
   ngOnInit() {
     this.initFront();
+    this.initTemp();
   }
 
-
+  initTemp(): void {
+    this.service.getData('http://192.168.1.16:5000/GetTemp').subscribe((data: any) => {
+      console.log(data);
+      this.tempSTR = data.temperature + '°C';
+      if (data.temperature < 24) {
+        this.tempColor = '#4a90e2';
+      } else if (data.temperature < 30) {
+        this.tempColor = '#add8bc';
+      } else {
+        this.tempColor = '#e13438';
+      }
+    });
+  }
   bedSwitch(): void {
     this.service.getData('http://192.168.1.16:5000/CLightSwitch').subscribe((data: any) => {
       this.ledC = data.status;
