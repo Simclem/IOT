@@ -15,6 +15,8 @@ red = 21
 blue = 16
 green = 20
 
+serG = 12
+
 gpio.setmode(gpio.BCM)
 gpio.setup(red,gpio.OUT)
 gpio.setup(blue,gpio.OUT)
@@ -22,7 +24,9 @@ gpio.setup(green,gpio.OUT)
 gpio.output(red,gpio.LOW)
 gpio.output(blue,gpio.LOW)
 gpio.output(green,gpio.LOW)
-
+gpio.setup(12,gpio.OUT)
+serG = gpio.PWM(12,50)
+serG.start(2.35)
 os.system('modprobe w1-gpio')
 os.system('modprobe w1-therm')
 base_dir = '/sys/bus/w1/devices/'
@@ -81,6 +85,10 @@ def on_message(client, userdata, msg):
         ledSDB.off()
         ledS.off()
         ledC.off()
+    if msg.payload == "opG":
+        serG.ChangeDutyCycle(6.7)
+    if msg.payload == "clG":
+        serG.ChangeDutyCycle(2.35)
     if msg.payload == "getTemp":
         temp = read_temp()
         f= open("./temp.txt","w+")
