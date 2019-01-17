@@ -1,5 +1,7 @@
 This Project is a school project in IOT course.
 
+All GPIOS are in MQTT.py
+
 We have a three parts on this app : 
 
 - MQTT's message broker which gives order to different components
@@ -19,3 +21,4 @@ and npm i then npm run when you are in /front/FrontIOT
 Now open you web browser and search localhost:4200.
 
 The apps is running.
+
